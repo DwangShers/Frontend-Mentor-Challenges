@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Calculator</title>
+    <style>
+        .button-container {
+            display: flex;
+            gap: 10px; /* Adds space between the buttons */
+            margin-top: 10px;
+        }
+        /* Adds space between val1 and val2 input fields */
+        #val1, #val2 {
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        function add() {
+            var val1 = parseFloat(document.getElementById('val1').value);
+            var val2 = parseFloat(document.getElementById('val2').value);
+            var result = val1 + val2;
+            document.getElementById('result').textContent = "Result: " + result;
+        }
+
+        function subtract() {
+            var val1 = parseFloat(document.getElementById('val1').value);
+            var val2 = parseFloat(document.getElementById('val2').value);
+            var result = val1 - val2;
+            document.getElementById('result').textContent = "Result: " + result;
+        }
+
+        function multiply() {
+            var val1 = parseFloat(document.getElementById('val1').value);
+            var val2 = parseFloat(document.getElementById('val2').value);
+            var result = val1 * val2;
+            document.getElementById('result').textContent = "Result: " + result;
+        }
+
+        function divide() {
+            var val1 = parseFloat(document.getElementById('val1').value);
+            var val2 = parseFloat(document.getElementById('val2').value);
+            if(val2 != 0) {
+                var result = val1 / val2;
+                document.getElementById('result').textContent = "Result: " + result;
+            } else {
+                alert("Division by zero is not allowed.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <label for="val1">Val1:</label>
+        <input type="number" id="val1" name="val1" step="any">
+        <br>
+        <label for="val2">Val2:</label>
+        <input type="number" id="val2" name="val2" step="any">
+    </div>
+    <div class="button-container">
+        <input type="button" value="Add" onclick="add()">
+        <input type="button" value="Subtract" onclick="subtract()">
+        <input type="button" value="Multiply" onclick="multiply()">
+        <input type="button" value="Divide" onclick="divide()">
+    </div>
+    <p id="result">Result: </p>
+</body>
+</html>

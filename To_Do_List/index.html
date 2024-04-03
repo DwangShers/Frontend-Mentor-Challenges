@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <style>
+        .delete-btn {
+            margin-left: 10px;
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: none; /* Initially hide the button */
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        li:hover .delete-btn {
+            display: inline-block; /* Show the button on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>To Do List</h1>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name">
+    <button type="button" onclick="addItem()">Add</button>
+    <ol id="itemList"></ol>
+
+    <script>
+        function addItem() {
+            var name = document.getElementById("name").value;
+            if (name === '') {
+                alert("Please enter a name.");
+                return;
+            }
+
+            var list = document.getElementById("itemList");
+            var listItem = document.createElement("li");
+            listItem.textContent = name;
+
+            var deleteBtn = document.createElement("button");
+            deleteBtn.textContent = "Delete";
+            deleteBtn.className = "delete-btn";
+            deleteBtn.onclick = function() {
+                list.removeChild(listItem);
+            };
+
+            listItem.appendChild(deleteBtn);
+            list.appendChild(listItem);
+
+            document.getElementById("name").value = "";
+        }
+    </script>
+</body>
+</html>
